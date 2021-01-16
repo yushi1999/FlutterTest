@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         body: Column(
           children: <Widget>[
             Container(
-              padding: EdgeInsets.only(top: 32),
+              padding: EdgeInsets.only(top: 16),
               child: Text("FlatButton"),
             ),
             Row(
@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
               ],
             ),
             Container(
-              padding: EdgeInsets.only(top: 32),
+              padding: EdgeInsets.only(top: 16),
               child: Text("OutlineButton"),
             ),
             Row(
