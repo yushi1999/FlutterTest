@@ -54,6 +54,7 @@ class MyApp extends StatelessWidget {
                   children: <Widget>[
                     Text('***'),
                     Text('均等に配置'),
+                    //aaa
                   ],
                 )),
             Container(
