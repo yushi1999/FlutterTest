@@ -9,122 +9,111 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(primarySwatch: Colors.blue),
-        home: Scaffold(
-            body: Column(
+      title: "Button Demo",
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: Scaffold(
+        body: Column(
           children: <Widget>[
             Container(
-                width: double.infinity,
-                height: 70,
-                color: Colors.grey[200],
-                child: Column(
-                  children: <Widget>[
-                    Text('first line'),
-                    Text('second line'),
-                  ],
-                )),
-            Container(
-                width: double.infinity,
-                height: 70,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text('***'),
-                    Text('中央寄せ'),
-                  ],
-                )),
-            Container(
-              width: double.infinity,
-              height: 70,
-              color: Colors.grey[200],
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  Text("***"),
-                  Text('下寄せ'),
-                ],
-              ),
+              padding: EdgeInsets.only(top: 32),
+              child: Text("FlatButton"),
             ),
-            Container(
-                width: double.infinity,
-                height: 70,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    Text('***'),
-                    Text('均等に配置'),
-                    //aaa
-                  ],
-                )),
-            Container(
-                width: double.infinity,
-                height: 70,
-                color: Colors.grey[200],
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text("***"),
-                    Text("左寄せ"),
-                  ],
-                )),
-            Container(
-              width: double.infinity,
-              height: 70,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: <Widget>[
-                  Text("***"),
-                  Text("右寄せ"),
-                ],
-              ),
-            ),
-            Container(
-              width: double.infinity,
-              height: 70,
-              color: Colors.grey[200],
-              child: Row(
-                //横に並べる
-                children: <Widget>[
-                  Container(color: Colors.red, child: Text("first")),
-                  Container(color: Colors.blue, child: Text("second")),
-                  Container(color: Colors.green, child: Text("third")),
-                ],
-              ),
-            ),
-            Container(
-              width: double.infinity,
-              height: 70,
-              child: Row(
-                //中央寄せ
-                //mainAxisAlignment: MainAxisAlignment.center,
-                //右寄せ
-                //mainAxisAlignment: MainAxisAlignment.end,
-                //均等配置
+            Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Container(color: Colors.red, child: Text("***")),
-                  Container(color: Colors.blue, child: Text("***")),
-                ],
-              ),
+                  FlatButton(
+                    onPressed: null,
+                    child: Text("disabled"),
+                  ),
+                  FlatButton(
+                    onPressed: () {},
+                    child: Text("enabled"),
+                  ),
+                ]),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                FlatButton(
+                  disabledColor: Colors.grey,
+                  disabledTextColor: Colors.white,
+                  onPressed: null,
+                  child: Text("disabled"),
+                ),
+                FlatButton(
+                  color: Colors.blue,
+                  onPressed: () {},
+                  child: Text("enabled"),
+                ),
+              ],
             ),
             Container(
-              width: double.infinity,
-              height: 70,
-              color: Colors.grey[200],
-              child: Row(
-                //上寄せ
-                crossAxisAlignment: CrossAxisAlignment.start,
-                //下寄せ
-                //crossAxisAlignment: CrossAxisAlignment.end,
-                children: <Widget>[
-                  Container(color: Colors.red, child: Text('***')),
-                  Container(color: Colors.green, child: Text('---')),
-                ],
-              ),
+              padding: EdgeInsets.only(top: 32),
+              child: Text("OutlineButton"),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                OutlineButton(
+                  onPressed: null,
+                  child: Text("disabled"),
+                ),
+                OutlineButton(
+                  onPressed: () {},
+                  child: Text("enabled"),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                OutlineButton(
+                  onPressed: null,
+                  disabledBorderColor: Colors.red,
+                  child: Text("disabled"),
+                ),
+                OutlineButton(
+                  onPressed: () {},
+                  borderSide: BorderSide(color: Colors.blue),
+                  child: Text("enabled"),
+                ),
+              ],
+            ),
+            Container(
+              padding: EdgeInsets.only(top: 32),
+              child: Text("RaisedButton"),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                RaisedButton(
+                  onPressed: null,
+                  child: Text("disabled"),
+                ),
+                RaisedButton(
+                  onPressed: () {},
+                  child: Text("enabled"),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                RaisedButton(
+                  onPressed: null,
+                  elevation: 8,
+                  child: Text("disabled"),
+                ),
+                RaisedButton(
+                  elevation: 8,
+                  onPressed: () {},
+                  child: Text('enabled'),
+                ),
+              ],
             ),
           ],
-        )));
+        ),
+      ),
+    );
   }
 }
 
