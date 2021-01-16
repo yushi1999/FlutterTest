@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
               ],
             ),
             Container(
-              padding: EdgeInsets.only(top: 16),
+              padding: EdgeInsets.only(top: 10),
               child: Text("OutlineButton"),
             ),
             Row(
@@ -79,7 +79,7 @@ class MyApp extends StatelessWidget {
               ],
             ),
             Container(
-              padding: EdgeInsets.only(top: 32),
+              padding: EdgeInsets.only(top: 10),
               child: Text("RaisedButton"),
             ),
             Row(
@@ -110,7 +110,59 @@ class MyApp extends StatelessWidget {
                 ),
               ],
             ),
+            Container(
+              padding: EdgeInsets.only(top: 10),
+              child: Text("IconButton"),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                IconButton(
+                  icon: Icon(Icons.thumb_up),
+                  onPressed: () {},
+                ),
+                IconButton(
+                  color: Colors.pink,
+                  onPressed: () {},
+                  icon: Icon(Icons.favorite),
+                ),
+                IconButton(
+                  iconSize: 40,
+                  onPressed: () {},
+                  icon: Icon(Icons.flight),
+                ),
+              ],
+            ),
+            Container(
+              padding: EdgeInsets.only(top: 10),
+              child: Text("アイコン＋テキスト"),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                FlatButton.icon(
+                  onPressed: () {},
+                  icon: Icon(Icons.favorite),
+                  label: Text("like"),
+                ),
+                OutlineButton.icon(
+                  onPressed: () {},
+                  icon: Icon(Icons.favorite, color: Colors.pink),
+                  label: Text("like"),
+                ),
+                RaisedButton.icon(
+                  onPressed: () {},
+                  icon: Icon(Icons.flight),
+                  label: Text("Flight"),
+                ),
+              ],
+            ),
           ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          backgroundColor: Colors.green,
+          child: Icon(Icons.add),
         ),
       ),
     );
