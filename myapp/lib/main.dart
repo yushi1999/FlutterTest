@@ -5,164 +5,112 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  final List<Map<String, dynamic>> listItems = [
+    {
+      "text": "Item 1",
+      "color": Colors.blue[600],
+    },
+    {
+      "text": "Item 2",
+      "color": Colors.blue[300],
+    },
+    {
+      "text": "Item 3",
+      "color": Colors.blue[100],
+    },
+  ];
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Button Demo",
+      title: "List Demo",
       theme: ThemeData(primarySwatch: Colors.blue),
       home: Scaffold(
         body: Column(
           children: <Widget>[
             Container(
-              padding: EdgeInsets.only(top: 16),
-              child: Text("FlatButton"),
-            ),
-            Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              height: 125,
+              padding: EdgeInsets.all(4),
+              //childrenを指定してリスト表示
+              child: ListView(
                 children: <Widget>[
-                  FlatButton(
-                    onPressed: null,
-                    child: Text("disabled"),
+                  Container(
+                    height: 50,
+                    color: Colors.blue[600],
+                    child: Text("Item 1"),
                   ),
-                  FlatButton(
-                    onPressed: () {},
-                    child: Text("enabled"),
+                  Container(
+                    height: 50,
+                    color: Colors.blue[300],
+                    child: Text("Item 2"),
                   ),
-                ]),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                FlatButton(
-                  disabledColor: Colors.grey,
-                  disabledTextColor: Colors.white,
-                  onPressed: null,
-                  child: Text("disabled"),
-                ),
-                FlatButton(
-                  color: Colors.blue,
-                  onPressed: () {},
-                  child: Text("enabled"),
-                ),
-              ],
+                  Container(
+                    height: 50,
+                    color: Colors.blue[100],
+                    child: Text("Item 3"),
+                  ),
+                ],
+              ),
             ),
             Container(
-              padding: EdgeInsets.only(top: 10),
-              child: Text("OutlineButton"),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                OutlineButton(
-                  onPressed: null,
-                  child: Text("disabled"),
-                ),
-                OutlineButton(
-                  onPressed: () {},
-                  child: Text("enabled"),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                OutlineButton(
-                  onPressed: null,
-                  disabledBorderColor: Colors.red,
-                  child: Text("disabled"),
-                ),
-                OutlineButton(
-                  onPressed: () {},
-                  borderSide: BorderSide(color: Colors.blue),
-                  child: Text("enabled"),
-                ),
-              ],
+              height: 125,
+              padding: EdgeInsets.all(4),
+              //配列を元にリスト表示
+              child: ListView.builder(
+                itemCount: listItems.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    height: 50,
+                    color: listItems[index]["color"],
+                    child: Text(listItems[index]["text"]),
+                  );
+                },
+              ),
             ),
             Container(
-              padding: EdgeInsets.only(top: 10),
-              child: Text("RaisedButton"),
+              height: 125,
+              padding: EdgeInsets.all(4),
+              //各アイテムの間にスペースなどをはさみたい場合
+              child: ListView.separated(
+                itemCount: listItems.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    height: 50,
+                    color: listItems[index]["color"],
+                    child: Text(listItems[index]["text"]),
+                  );
+                },
+                separatorBuilder: (context, index) {
+                  return Divider();
+                },
+              ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                RaisedButton(
-                  onPressed: null,
-                  child: Text("disabled"),
-                ),
-                RaisedButton(
-                  onPressed: () {},
-                  child: Text("enabled"),
-                ),
-              ],
+
+            //タイトル・サブタイトル・画像・アイコンなどを含めたアイテムを作る
+            ListTile(
+              leading: Image.network('https://placehold.jp/50x50.png'),
+              title: Text("ListTile"),
+              subtitle: Text("subtitle"),
+              trailing: Icon(Icons.more_vert),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                RaisedButton(
-                  onPressed: null,
-                  elevation: 8,
-                  child: Text("disabled"),
-                ),
-                RaisedButton(
-                  elevation: 8,
-                  onPressed: () {},
-                  child: Text('enabled'),
-                ),
-              ],
+            //影の着いたカードUIが作れる
+            Card(
+              child: Container(
+                height: 60,
+                width: double.infinity,
+                child: Text("Card"),
+              ),
             ),
-            Container(
-              padding: EdgeInsets.only(top: 10),
-              child: Text("IconButton"),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                IconButton(
-                  icon: Icon(Icons.thumb_up),
-                  onPressed: () {},
-                ),
-                IconButton(
-                  color: Colors.pink,
-                  onPressed: () {},
-                  icon: Icon(Icons.favorite),
-                ),
-                IconButton(
-                  iconSize: 40,
-                  onPressed: () {},
-                  icon: Icon(Icons.flight),
-                ),
-              ],
-            ),
-            Container(
-              padding: EdgeInsets.only(top: 10),
-              child: Text("アイコン＋テキスト"),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                FlatButton.icon(
-                  onPressed: () {},
-                  icon: Icon(Icons.favorite),
-                  label: Text("like"),
-                ),
-                OutlineButton.icon(
-                  onPressed: () {},
-                  icon: Icon(Icons.favorite, color: Colors.pink),
-                  label: Text("like"),
-                ),
-                RaisedButton.icon(
-                  onPressed: () {},
-                  icon: Icon(Icons.flight),
-                  label: Text("Flight"),
-                ),
-              ],
+            //組み合わせることもOK
+            Card(
+              child: ListTile(
+                leading: Image.network('https://placehold.jp/50x50.png'),
+                title: Text('Card and ListTile'),
+                subtitle: Text('subtitle'),
+                trailing: Icon(Icons.more_vert),
+              ),
             ),
           ],
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          backgroundColor: Colors.green,
-          child: Icon(Icons.add),
         ),
       ),
     );
