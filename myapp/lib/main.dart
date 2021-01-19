@@ -26,93 +26,57 @@ class MyApp extends StatelessWidget {
       title: "List Demo",
       theme: ThemeData(primarySwatch: Colors.blue),
       home: Scaffold(
-        body: Column(
-          children: <Widget>[
-            Container(
-              height: 125,
-              padding: EdgeInsets.all(4),
-              //childrenを指定してリスト表示
-              child: ListView(
-                children: <Widget>[
-                  Container(
-                    height: 50,
-                    color: Colors.blue[600],
-                    child: Text("Item 1"),
-                  ),
-                  Container(
-                    height: 50,
-                    color: Colors.blue[300],
-                    child: Text("Item 2"),
-                  ),
-                  Container(
-                    height: 50,
-                    color: Colors.blue[100],
-                    child: Text("Item 3"),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              height: 125,
-              padding: EdgeInsets.all(4),
-              //配列を元にリスト表示
-              child: ListView.builder(
-                itemCount: listItems.length,
-                itemBuilder: (context, index) {
-                  return Container(
-                    height: 50,
-                    color: listItems[index]["color"],
-                    child: Text(listItems[index]["text"]),
-                  );
-                },
-              ),
-            ),
-            Container(
-              height: 125,
-              padding: EdgeInsets.all(4),
-              //各アイテムの間にスペースなどをはさみたい場合
-              child: ListView.separated(
-                itemCount: listItems.length,
-                itemBuilder: (context, index) {
-                  return Container(
-                    height: 50,
-                    color: listItems[index]["color"],
-                    child: Text(listItems[index]["text"]),
-                  );
-                },
-                separatorBuilder: (context, index) {
-                  return Divider();
-                },
-              ),
-            ),
-
-            //タイトル・サブタイトル・画像・アイコンなどを含めたアイテムを作る
-            ListTile(
-              leading: Image.network('https://placehold.jp/50x50.png'),
-              title: Text("ListTile"),
-              subtitle: Text("subtitle"),
-              trailing: Icon(Icons.more_vert),
-            ),
-            //影の着いたカードUIが作れる
-            Card(
-              child: Container(
-                height: 60,
-                width: double.infinity,
-                child: Text("Card"),
-              ),
-            ),
-            //組み合わせることもOK
-            Card(
-              child: ListTile(
-                leading: Image.network('https://placehold.jp/50x50.png'),
-                title: Text('Card and ListTile'),
-                subtitle: Text('subtitle'),
-                trailing: Icon(Icons.more_vert),
-              ),
-            ),
-          ],
+        appBar: AppBar(
+            //左側のアイコン
+            leading: Icon(Icons.arrow_back),
+            //タイトルテキスト
+            title: Text("Hello"),
+            //右側のアイコン一覧
+            actions: <Widget>[
+              IconButton(icon: Icon(Icons.favorite), onPressed: () {}),
+              IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.more_vert),
+              )
+            ]),
+        body: Center(
+          child: MyWidget(),
         ),
       ),
+    );
+  }
+}
+
+class MyWidget extends StatefulWidget {
+  //使用するStateを指定
+  @override
+  _MyWidgetState createState() => _MyWidgetState();
+}
+
+class _MyWidgetState extends State<MyWidget> {
+  //データを宣言
+  int count = 0;
+
+  //データをもとにWidgetを作る
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Text(count.toString()),
+        RaisedButton(
+          onPressed: () {
+            //データを更新するときはsetStateを呼ぶ
+            setState(
+              () {
+                //データを更新
+                count = count + 1;
+              },
+            );
+          },
+          child: Text("カウントアップ"),
+        ),
+      ],
     );
   }
 }
